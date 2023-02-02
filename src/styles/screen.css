@@ -1,0 +1,13 @@
+.last-operation {
+  font-size: 1.5rem;
+  text-align: right;
+  color: #6b6b6b;
+}
+
+.result {
+  color: #ebebeb;
+  font-size: 3rem;
+
+  display: flex;
+  justify-content: space-between;
+}
