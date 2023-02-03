@@ -9,11 +9,10 @@ interface prop {
 function Btn({ symbol, type, setKey }: prop) {
   function handleClick(event: React.MouseEvent) {
     const pressedKey = event.currentTarget.textContent;
-    const classList = event.currentTarget.classList;
-    if (classList.contains("operation")) setKey(pressedKey, "operation");
-    else if (classList.contains("number")) setKey(pressedKey, "number");
-    else if (classList.contains("equal")) setKey(pressedKey, "equal");
+
+    setKey(pressedKey, type);
   }
+
   return (
     <div>
       {type === "none" && (
@@ -26,7 +25,7 @@ function Btn({ symbol, type, setKey }: prop) {
           {symbol}
         </button>
       )}
-      {type === "num" && (
+      {type === "number" && (
         <button className="button number" onClick={handleClick}>
           {symbol}
         </button>

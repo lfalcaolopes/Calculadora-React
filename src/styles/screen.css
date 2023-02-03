@@ -9,5 +9,6 @@
   font-size: 3rem;
 
   display: flex;
+  overflow: hidden;
   justify-content: space-between;
 }

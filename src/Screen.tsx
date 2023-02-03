@@ -8,6 +8,7 @@ interface prop {
 }
 
 function Screen({ screenInfo }: prop) {
+  if (screenInfo.screenLastOperation === "") screenInfo.screenLastOperation = "0";
   return (
     <div>
       <div className="last-operation">
