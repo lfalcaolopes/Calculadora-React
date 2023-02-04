@@ -1,4 +1,4 @@
-import "./styles/screen.css";
+import "./screen.css";
 
 interface prop {
   screenInfo: {
@@ -8,6 +8,7 @@ interface prop {
 }
 
 function Screen({ screenInfo }: prop) {
+  // Preset 0 as the last operation if string is empty
   if (screenInfo.screenLastOperation === "") screenInfo.screenLastOperation = "0";
   return (
     <div>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import Btn from "./Btn";
-import Screen from "./Screen";
-import "./styles/app.css";
+import Btn from "../Btn/Btn";
+import Screen from "../Screen/Screen";
+import Big from "big.js";
+import "./app.css";
 
 let numbers: string[] = [""];
 let counter = 0;
@@ -10,10 +11,12 @@ let lastOperation = "";
 let shouldReset = false;
 
 function calculator(num1: number, num2: number, operation: string) {
+  // Using Big library to avoid decimal numbers imprecision
+  const x = new Big(num1);
   if (operation === "+") {
-    return num1 + num2;
+    return +x.plus(num2);
   } else if (operation === "-") {
-    return num1 - num2;
+    return +x.minus(num2);
   } else if (operation === "×") {
     return num1 * num2;
   } else if (operation === "÷") {
@@ -36,11 +39,14 @@ interface screen {
 function App() {
   const [key, setKey] = useState("");
   const [type, setType] = useState("");
+  const [timestamp, setTimestamp] = useState(Date.now());
   const [screenInfo, setScreenInfo] = useState<screen>({ screenResult: 0, screenLastOperation: "0" });
 
   const chooseKey = (key: string, type: string) => {
     setKey(key);
     setType(type);
+    //set timestamp of when the button is clicked to allow the same number being clicked twice
+    setTimestamp(Date.now());
   };
 
   useEffect(() => {
@@ -53,6 +59,18 @@ function App() {
     } // Turns number in percentage (x/100)
     else if (key === "%") {
       numbers[counter] = `${+numbers[counter] / 100}`;
+    } // Adds comma to the number
+    else if (key === ",") {
+      numbers[counter] += ".";
+    } // Inverts number signal
+    else if (key === "±") {
+      // Removes if the number already includes the - signal
+      if (numbers[counter].includes("-")) {
+        numbers[counter] = numbers[counter].slice(1);
+      } // Adds if the number doesn't have the - signal
+      else {
+        numbers[counter] = "-" + numbers[counter];
+      }
     } // Concatenate number inputs
     else if (type === "number") {
       // Clear calculator if a number is clicked right after the equal button
@@ -84,7 +102,7 @@ function App() {
       shouldReset = true;
       numbers = [`${result}`];
     }
-  }, [key]);
+  }, [key, timestamp]);
 
   return (
     <div className="device">
