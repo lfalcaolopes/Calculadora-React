@@ -15,6 +15,12 @@
  <a href="#-autor">Autor</a>
 </p>
 
+<h4 align="center">
+    <a href="README.md">Inglês</a>
+    ·
+    <a href="README-pt.md">Português</a>
+</h4>
+
 ## 🔖 Sobre 
 
 Desenvolvi uma calculadora em React inspirado no projeto do Boracodar.dev da Rocketseat. O projeto consistiu em criar uma interface com botões para realizar operações básicas de matemática. Utilizei o framework React para criar os componentes e aplicar o conceito de estado para controlar os valores na tela. O projeto foi uma ótima oportunidade para aprimorar minhas habilidades em React e aprender novas técnicas de programação.
@@ -32,7 +38,6 @@ Desenvolvi uma calculadora em React inspirado no projeto do Boracodar.dev da Roc
 
 O projeto foi desenvolvido utilizando as seguintes tecnologias
 
-- HTML & CSS
 - [ReactJS](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 
